@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — HashFunds</title>
+<meta name="description" content="Speak to the HashFunds investment team. The first call is thirty minutes with an investment professional, not a salesperson.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='14' font-weight='700' fill='%23fff' text-anchor='middle'%3EHF%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to content</a>
+
+<main id="main">
+
+  <header class="page-hd">
+    <div class="hairline-grid" aria-hidden="true"></div>
+    <div class="wrap">
+      <nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span>Contact</span></nav>
+      <h1 class="h1" data-reveal>Start with a<br>hard question.</h1>
+      <p class="lede">
+        Thirty minutes with someone from the investment team. If we are not the right manager
+        for your situation, you will hear that on the first call rather than the fourth.
+      </p>
+    </div>
+  </header>
+
+  <!-- ============================================================= FORM -->
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="split split-40" style="align-items:start">
+
+        <div data-anim="left" class="stack-lg">
+          <div class="contact-card">
+            <div class="kpi-l">Investment enquiries</div>
+            <a class="h3" href="mailto:invest@hashfunds.com" style="display:block;margin-top:10px">invest@hashfunds.com</a>
+            <button class="link-u" style="margin-top:14px" data-copy="invest@hashfunds.com">Copy address</button>
+          </div>
+
+          <div class="contact-card">
+            <div class="kpi-l">Office</div>
+            <p class="muted" style="margin-top:12px;line-height:1.9" id="addr"></p>
+            <div class="flex gap aic" style="margin-top:16px">
+              <span class="pill"><span class="live-dot"></span>Local time</span>
+              <span class="num" data-clock="Asia/Kolkata">—</span>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="kpi-l">Other routes</div>
+            <div class="footer-links" style="margin-top:12px">
+              <a href="mailto:press@hashfunds.com">Press — press@hashfunds.com</a>
+              <a href="mailto:careers@hashfunds.com">Careers — careers@hashfunds.com</a>
+              <a href="dashboard.html">Existing investors — portal</a>
+            </div>
+          </div>
+
+          <div class="map-shell">
+            <svg viewBox="0 0 400 250" fill="none" aria-hidden="true">
+              <g stroke="currentColor" stroke-width="0.5" opacity="0.35">
+                <path d="M0 40h400M0 80h400M0 120h400M0 160h400M0 200h400"/>
+                <path d="M40 0v250M90 0v250M140 0v250M190 0v250M240 0v250M290 0v250M340 0v250"/>
+              </g>
+              <g stroke="currentColor" stroke-width="1.1" opacity="0.75">
+                <path d="M30 190 L110 150 L175 165 L230 120 L300 135 L370 95"/>
+                <path d="M60 60 L130 95 L190 70 L260 105 L330 75"/>
+                <rect x="150" y="100" width="60" height="45"/>
+                <rect x="230" y="145" width="45" height="35"/>
+                <rect x="70" y="120" width="50" height="30"/>
+              </g>
+            </svg>
+            <span class="map-pin" style="left:47%;top:47%"></span>
+          </div>
+        </div>
+
+        <div data-anim="right">
+          <form data-form data-subject="New enquiry — hashfunds.com" data-success="Received. An investment team member will reply within one business day." class="card" style="padding:clamp(24px,3vw,40px)">
+            <div class="eyebrow no-rule">Enquiry</div>
+            <h2 class="h2" style="margin:14px 0 28px">Tell us what you are solving for.</h2>
+
+            <div class="grid g-2" style="gap:24px">
+              <div class="field">
+                <label for="fName">Full name *</label>
+                <input class="inp" id="fName" name="name" required placeholder="Your name">
+                <span class="field-err">Please enter your name.</span>
+              </div>
+              <div class="field">
+                <label for="fEmail">Email *</label>
+                <input class="inp" id="fEmail" name="email" type="email" required placeholder="you@firm.com">
+                <span class="field-err">Enter a valid email address.</span>
+              </div>
+            </div>
+
+            <div class="grid g-2" style="gap:24px;margin-top:24px">
+              <div class="field">
+                <label for="fOrg">Organisation</label>
+                <input class="inp" id="fOrg" name="org" placeholder="Firm or family office">
+              </div>
+              <div class="field">
+                <label for="fPhone">Phone</label>
+                <input class="inp" id="fPhone" name="phone" type="tel" placeholder="Optional">
+              </div>
+            </div>
+
+            <div class="grid g-2" style="gap:24px;margin-top:24px">
+              <div class="field">
+                <label for="fStrategy">Strategy of interest</label>
+                <select class="inp" id="fStrategy" name="strategy"></select>
+              </div>
+              <div class="field">
+                <label for="fSize">Indicative allocation</label>
+                <select class="inp" id="fSize" name="size">
+                  <option>Under $250,000</option>
+                  <option selected>$250,000 – $1M</option>
+                  <option>$1M – $5M</option>
+                  <option>$5M – $25M</option>
+                  <option>Over $25M</option>
+                  <option>Not applicable — research only</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field" style="margin-top:24px">
+              <label for="fMsg">What are you trying to solve? *</label>
+              <textarea class="inp" id="fMsg" name="message" required placeholder="Objective, horizon, constraints, and anything that has gone wrong before."></textarea>
+              <span class="field-err">A sentence or two is enough.</span>
+            </div>
+
+            <label class="check" style="margin-top:26px">
+              <input type="checkbox" name="consent">
+              <span class="box"></span>
+              <span class="t">
+                I have read the risk warning below and understand that digital assets are volatile,
+                that past performance does not predict future results, and that this form does not
+                create an advisory relationship. *
+              </span>
+            </label>
+
+            <button class="btn btn-block" type="submit" style="margin-top:28px">Send enquiry
+              <svg class="arw" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h11M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+
+            <p class="dim" style="font-size:0.72rem;margin-top:18px;line-height:1.7">
+              What you send here reaches the founder's inbox directly and is used only to answer
+              your enquiry. It is not added to a marketing list and is not shared with anyone else.
+            </p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================== PROCESS -->
+  <section class="section" style="border-top:1px solid var(--line)">
+    <div class="wrap">
+      <div class="section-hd">
+        <div class="eyebrow" data-anim="fade">What happens next</div>
+        <h2 class="h2" data-anim>Four steps, roughly three weeks.</h2>
+      </div>
+      <div class="grid g-4">
+        <div class="card" data-anim>
+          <div class="svc-n">DAY 1</div>
+          <h3 class="h3" style="margin:14px 0 10px">Reply</h3>
+          <p class="muted" style="font-size:0.9rem">A member of the investment team responds directly with initial thoughts and questions.</p>
+        </div>
+        <div class="card" data-anim style="--d:0.08s">
+          <div class="svc-n">WEEK 1</div>
+          <h3 class="h3" style="margin:14px 0 10px">Suitability call</h3>
+          <p class="muted" style="font-size:0.9rem">Thirty minutes on your objective, horizon and constraints. We say plainly if there is no fit.</p>
+        </div>
+        <div class="card" data-anim style="--d:0.16s">
+          <div class="svc-n">WEEK 2</div>
+          <h3 class="h3" style="margin:14px 0 10px">Documentation</h3>
+          <p class="muted" style="font-size:0.9rem">Full offering documents, fee schedule, conflicts register and custody arrangements — before anything is signed.</p>
+        </div>
+        <div class="card" data-anim style="--d:0.24s">
+          <div class="svc-n">WEEK 3</div>
+          <h3 class="h3" style="margin:14px 0 10px">Onboarding</h3>
+          <p class="muted" style="font-size:0.9rem">KYC, custody setup and portal access. Your first written position review lands within the month.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================== CAREERS -->
+  <section class="section invert" id="careers">
+    <div class="wrap">
+      <div class="split" style="align-items:start">
+        <div data-anim="left">
+          <div class="eyebrow no-rule" style="color:inherit;opacity:0.6">Careers</div>
+          <h2 class="h2" style="margin-top:18px">No open roles right now.</h2>
+          <p style="margin-top:20px;opacity:0.75;max-width:48ch">
+            HashFunds is a one-person firm and is not hiring at present. That will change as the
+            business grows. If you want to be considered when it does, send something you have
+            written and been wrong about — that is far more useful to me than a CV.
+          </p>
+          <a class="btn mt" href="mailto:careers@hashfunds.com">Introduce yourself
+            <svg class="arw" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h11M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <div data-anim="right">
+          <div class="big-list" style="border-color:currentColor">
+            <div class="li" style="border-color:currentColor"><span class="lt">Research &amp; diligence</span><span class="num" style="opacity:0.65">Future</span></div>
+            <div class="li" style="border-color:currentColor"><span class="lt">Operations &amp; reporting</span><span class="num" style="opacity:0.65">Future</span></div>
+          </div>
+          <p style="font-size:0.74rem;margin-top:18px;opacity:0.55;line-height:1.7">
+            Areas the firm expects to hire into eventually — not current vacancies. Add real
+            listings here when you have them.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================== FAQ -->
+  <section class="section">
+    <div class="wrap wrap-narrow">
+      <div class="section-hd center">
+        <div class="eyebrow no-rule" data-anim="fade">Common questions</div>
+        <h2 class="h2" data-anim>Before you write to us.</h2>
+      </div>
+      <div data-render="faqs" data-anim></div>
+    </div>
+  </section>
+
+</main>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/charts.js"></script>
+<script src="assets/js/render.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+(function () {
+  document.getElementById("addr").innerHTML = HF.company.address.join("<br>");
+
+  var sel = document.getElementById("fStrategy");
+  sel.innerHTML = '<option value="">Not sure yet — advise me</option>' +
+    HF.services.map(function (s) { return '<option value="' + s.slug + '">' + s.title + "</option>"; }).join("");
+
+  /* Arriving from the tokenisation section. */
+  if (new URLSearchParams(location.search).get("topic") === "tokenisation") {
+    var m = document.getElementById("fMsg");
+    m.value = "I'd like to follow the tokenisation and stablecoin work. ";
+    m.focus();
+    m.setSelectionRange(m.value.length, m.value.length);
+  }
+
+  /* Pre-select when arriving from a strategy page CTA. */
+  var q = new URLSearchParams(location.search).get("strategy");
+  if (q) {
+    sel.value = q;
+    var svc = HF.services.find(function (s) { return s.slug === q; });
+    if (svc) {
+      var msg = document.getElementById("fMsg");
+      msg.value = "I would like to know more about the " + svc.title + " mandate. ";
+      msg.focus();
+      msg.setSelectionRange(msg.value.length, msg.value.length);
+    }
+  }
+})();
+</script>
+</body>
+</html>

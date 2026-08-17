@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio — HashFunds</title>
+<meta name="description" content="How the HashFunds flagship book is constructed: allocation, holdings, risk metrics, rebalancing activity and a projection modeller.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='14' font-weight='700' fill='%23fff' text-anchor='middle'%3EHF%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to content</a>
+
+<main id="main">
+
+  <header class="page-hd">
+    <div class="hairline-grid" aria-hidden="true"></div>
+    <div class="wrap">
+      <nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span>Portfolio</span></nav>
+      <h1 class="h1" data-reveal>How the book<br>is built.</h1>
+      <p class="lede">
+        The construction model behind the flagship mandate — how positions are chosen, why they
+        are sized the way they are, and where the hard limits sit. This is the method, not a
+        statement of current holdings.
+      </p>
+    </div>
+  </header>
+
+  <!-- ============================================================ SPLIT -->
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="split">
+        <div data-anim="left">
+          <div class="chart-canvas" style="height:400px"><canvas id="allocChart" role="img" aria-label="Portfolio allocation donut chart"></canvas></div>
+          <div class="legend" style="justify-content:center" data-render="allocationLegend"></div>
+        </div>
+        <div data-anim="right">
+          <div class="eyebrow">Target allocation · Model</div>
+          <h2 class="h2" style="margin-top:18px">Concentrated where the conviction is.</h2>
+          <p class="muted mt">
+            Twelve to eighteen positions, no more. A book wide enough to be diversified in a
+            single asset class is usually just a book that has stopped making decisions.
+          </p>
+          <div style="margin-top:30px" data-render="allocation"></div>
+          <div class="note mt">
+            Cash and tokenised treasuries are a position, not a residual. When the opportunity
+            set is thin, holding dry powder is the trade.
+          </div>
+          <p class="dim" style="font-size:0.74rem;line-height:1.7;margin-top:20px">
+            These are target weights under the construction policy — a model, not a report of
+            what is held today. Live positions vary with the opportunity set and each client's
+            mandate, and are disclosed to investors directly.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================== LIMITS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-hd">
+        <div class="eyebrow" data-anim="fade">Constraints</div>
+        <h2 class="h2" data-anim style="margin-top:14px">What the book is not allowed to do.</h2>
+        <p class="lede" data-anim>
+          A construction policy is defined as much by its prohibitions as its targets. These
+          bind regardless of how attractive something looks in the moment.
+        </p>
+      </div>
+      <div class="grid g-3">
+        <div class="card" data-anim>
+          <h3 class="h3">No leverage in the flagship</h3>
+          <p class="muted" style="font-size:0.92rem;margin-top:10px">Borrowed money turns a drawdown you can survive into one you cannot. The flagship mandate runs unlevered.</p>
+        </div>
+        <div class="card" data-anim style="--d:0.08s">
+          <h3 class="h3">No unlisted venue balances</h3>
+          <p class="muted" style="font-size:0.92rem;margin-top:10px">Overnight balances sit only on venues from a written whitelist. The list is not revised because a trade would be convenient.</p>
+        </div>
+        <div class="card" data-anim style="--d:0.16s">
+          <h3 class="h3">No position without a thesis</h3>
+          <p class="muted" style="font-size:0.92rem;margin-top:10px">If the case and its falsification criteria are not in writing, the position does not exist — including for assets we already like.</p>
+        </div>
+      </div>
+      <p class="dim" style="font-size:0.74rem;margin-top:24px">
+        Confirm these match your written risk document before publishing.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================================================= CALCULATOR -->
+  <section class="section invert">
+    <div class="wrap">
+      <div class="section-hd">
+        <div class="eyebrow no-rule" style="color:inherit;opacity:0.6" data-anim="fade">Modeller</div>
+        <h2 class="h2" data-anim>Project a hypothetical allocation.</h2>
+        <p class="lede" data-anim style="color:inherit;opacity:0.72">
+          A compounding model, not a forecast. It assumes a constant annual rate, which markets
+          have never once delivered. Use it to reason about magnitude and horizon — nothing more.
+        </p>
+      </div>
+
+      <div class="calc" data-anim style="border-color:currentColor">
+        <div class="calc-in" style="border-color:currentColor">
+          <div class="field">
+            <label for="cInit">Initial allocation (USD)</label>
+            <input class="inp num" id="cInit" type="number" value="250000" min="0" step="10000" style="border-color:currentColor">
+            <input class="range" id="cInitR" type="range" min="50000" max="5000000" step="10000" value="250000" aria-label="Initial allocation slider">
+          </div>
+
+          <div class="field" style="margin-top:24px">
+            <label for="cMon">Monthly addition (USD)</label>
+            <input class="inp num" id="cMon" type="number" value="5000" min="0" step="500" style="border-color:currentColor">
+            <input class="range" id="cMonR" type="range" min="0" max="100000" step="500" value="5000" aria-label="Monthly addition slider">
+          </div>
+
+          <div class="field" style="margin-top:24px">
+            <label for="cYrs">Horizon — <span class="num" id="cYrsV">7</span> years</label>
+            <input class="range" id="cYrs" type="range" min="1" max="20" step="1" value="7" style="margin-top:6px">
+          </div>
+
+          <div class="field" style="margin-top:12px">
+            <label for="cRateIn">Annual rate you want to model — <span class="num" id="cRateV">8.0</span>%</label>
+            <input class="range" id="cRateIn" type="range" min="0" max="25" step="0.5" value="8" style="margin-top:6px">
+          </div>
+
+          <p class="dim" style="font-size:0.72rem;margin-top:22px;opacity:0.6;color:inherit;line-height:1.7">
+            You choose the rate. HashFunds is not suggesting, targeting or forecasting any
+            figure on this slider — it is your assumption, not ours.
+          </p>
+        </div>
+
+        <div class="calc-out" style="background:transparent;border-left:1px solid currentColor">
+          <div class="kpi-l" style="color:inherit;opacity:0.6">Projected value, base case</div>
+          <div class="calc-big num" id="cOut" style="margin-top:12px">—</div>
+          <div class="num" id="cOutSub" style="margin-top:10px;opacity:0.7;font-size:0.82rem">—</div>
+
+          <div class="chart-canvas" style="height:180px;margin-top:24px"><canvas id="calcChart" role="img" aria-label="Projected growth chart"></canvas></div>
+
+          <div class="calc-list" style="border-color:currentColor">
+            <div class="r" style="border-color:currentColor"><span>Total contributed</span><span id="cCon">—</span></div>
+            <div class="r" style="border-color:currentColor"><span>Projected gain</span><span id="cGain">—</span></div>
+            <div class="r" style="border-color:currentColor"><span>Bear case (−40% of rate)</span><span id="cBear">—</span></div>
+            <div class="r" style="border-color:currentColor"><span>Bull case (+40% of rate)</span><span id="cBull">—</span></div>
+            <div class="r" style="border-color:currentColor"><span>Assumed annual rate</span><span id="cRate">—</span></div>
+          </div>
+
+          <p style="font-size:0.72rem;line-height:1.7;margin-top:22px;padding-top:18px;border-top:1px solid currentColor;opacity:0.72">
+            <b>Not a forecast, projection or target.</b> This model applies one fixed rate every
+            year for the whole horizon. Real markets do not behave that way, and no HashFunds
+            strategy has ever returned the same figure two years running. Long horizons compound
+            the assumption, not the evidence — a number here being large tells you the input rate
+            was large, nothing more. You could lose the entire amount.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== REPORTING -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-hd">
+        <div class="eyebrow" data-anim="fade">Reporting</div>
+        <h2 class="h2" data-anim style="margin-top:14px">What you actually receive.</h2>
+        <p class="lede" data-anim>
+          Every trade is logged and reconciled against the custodian record. Investors see the
+          full ledger — not a summary written after the fact.
+        </p>
+      </div>
+      <div class="big-list" data-anim="fade">
+        <div class="li"><span class="lt">Full transaction ledger</span><span class="dim num">Reconciled to custodian</span></div>
+        <div class="li"><span class="lt">Position-level statement</span><span class="dim num">Monthly</span></div>
+        <div class="li"><span class="lt">Written position review</span><span class="dim num">Quarterly</span></div>
+        <div class="li"><span class="lt">Custodian statements</span><span class="dim num">Sent to you directly</span></div>
+        <div class="li"><span class="lt">Limit breach notification</span><span class="dim num">Within 1 business day</span></div>
+      </div>
+      <div class="flex gap wrapf mt">
+        <a class="btn" href="dashboard.html">Open the investor portal
+          <svg class="arw" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h11M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="contact.html">Request the full factsheet</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/charts.js"></script>
+<script src="assets/js/render.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+(function () {
+  /* Target allocation donut ---------------------------------------------- */
+  HFChart.donut(document.getElementById("allocChart"), {
+    data: HF.allocation, center: { v: "Target", l: "Model book" }
+  });
+
+  /* Projection modeller ---------------------------------------------------
+     The growth rate is supplied by the visitor, never by us. HashFunds must
+     not be the source of any expected-return figure on this page. */
+  var el = function (id) { return document.getElementById(id); };
+  var usd = function (n) {
+    return "$" + Math.round(n).toLocaleString("en-US");
+  };
+
+  var calcChart = null;
+
+  function project(init, monthly, years, rate) {
+    var pts = [], v = init;
+    pts.push(v);
+    for (var y = 1; y <= years; y++) {
+      for (var m = 0; m < 12; m++) v = v * (1 + rate / 12) + monthly;
+      pts.push(v);
+    }
+    return pts;
+  }
+
+  function run() {
+    var init = Math.max(0, parseFloat(el("cInit").value) || 0);
+    var mon = Math.max(0, parseFloat(el("cMon").value) || 0);
+    var yrs = parseInt(el("cYrs").value, 10);
+    var ratePct = parseFloat(el("cRateIn").value);
+    var rate = ratePct / 100;
+
+    el("cYrsV").textContent = yrs;
+    el("cRateV").textContent = ratePct.toFixed(1);
+
+    var base = project(init, mon, yrs, rate);
+    var bear = project(init, mon, yrs, rate * 0.6);
+    var bull = project(init, mon, yrs, rate * 1.4);
+
+    var final = base[base.length - 1];
+    var contributed = init + mon * 12 * yrs;
+
+    el("cOut").textContent = usd(final);
+    el("cOutSub").textContent = "After " + yrs + " year" + (yrs > 1 ? "s" : "") + " · " +
+      ((final / Math.max(1, contributed) - 1) * 100).toFixed(0) + "% above contributions";
+    el("cCon").textContent = usd(contributed);
+    el("cGain").textContent = usd(final - contributed);
+    el("cBear").textContent = usd(bear[bear.length - 1]);
+    el("cBull").textContent = usd(bull[bull.length - 1]);
+    el("cRate").textContent = ratePct.toFixed(1) + "% p.a. (your input)";
+
+    var labels = base.map(function (_, i) { return i === 0 ? "Now" : "Y" + i; });
+    var series = [
+      { name: "Base", data: base.map(Math.round), style: "solid", format: usd },
+      { name: "Bull", data: bull.map(Math.round), style: "dash", format: usd },
+      { name: "Bear", data: bear.map(Math.round), style: "dot", format: usd }
+    ];
+    if (calcChart) calcChart.update(series, labels);
+    else calcChart = HFChart.line(document.getElementById("calcChart"), {
+      labels: labels, series: series, fill: true,
+      pad: { t: 12, r: 10, b: 22, l: 54 }, grid: 3,
+      yFormat: function (v) { return v >= 1e6 ? (v / 1e6).toFixed(1) + "M" : Math.round(v / 1000) + "k"; }
+    });
+  }
+
+  /* Keep number inputs and their sliders in step. */
+  function pair(numId, rangeId) {
+    var n = el(numId), r = el(rangeId);
+    n.addEventListener("input", function () {
+      if (+n.value >= +r.min && +n.value <= +r.max) r.value = n.value;
+      run();
+    });
+    r.addEventListener("input", function () { n.value = r.value; run(); });
+  }
+  pair("cInit", "cInitR");
+  pair("cMon", "cMonR");
+  el("cYrs").addEventListener("input", run);
+  el("cRateIn").addEventListener("input", run);
+
+  run();
+})();
+</script>
+</body>
+</html>

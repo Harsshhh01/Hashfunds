@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Markets — HashFunds</title>
+<meta name="description" content="Live digital asset prices, 24-hour and 7-day moves, market capitalisation and sentiment, tracked by the HashFunds research desk.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='14' font-weight='700' fill='%23fff' text-anchor='middle'%3EHF%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to content</a>
+
+<main id="main">
+
+  <header class="page-hd">
+    <div class="hairline-grid" aria-hidden="true"></div>
+    <div class="wrap">
+      <nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span>Markets</span></nav>
+      <h1 class="h1" data-reveal>Live markets.</h1>
+      <p class="lede">
+        The assets our desk tracks daily, priced from a public market data feed. This page is
+        informational — it is not a recommendation to buy or sell anything on it.
+      </p>
+      <div class="flex gap wrapf aic mt">
+        <span class="pill"><span class="live-dot"></span><span data-stamp>Connecting…</span></span>
+        <button class="btn btn-sm btn-ghost" data-refresh>Refresh now</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="ticker" data-ticker aria-label="Live market prices">
+    <div class="ticker-track"></div>
+  </div>
+
+  <!-- ======================================================= HIGHLIGHTS -->
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="grid g-4" data-highlights data-anim="fade"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================ TABLE -->
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="section-hd flex between wrapf aic" style="gap:18px;margin-bottom:24px">
+        <div>
+          <div class="eyebrow">Tracked universe</div>
+          <h2 class="h2" style="margin-top:14px">Prices and momentum.</h2>
+        </div>
+        <div class="field" style="min-width:min(280px,100%)">
+          <label for="mktSearch">Filter assets</label>
+          <input class="inp" id="mktSearch" type="search" placeholder="Search by name or ticker…" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="tbl-wrap" data-market-table data-anim="fade">
+        <table class="tbl">
+          <caption class="sr">Live digital asset market data. Column headers are sortable.</caption>
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col" class="sortable" data-key="name">Asset <span class="caret">↕</span></th>
+              <th scope="col" class="sortable t-r" data-key="price">Price <span class="caret">↕</span></th>
+              <th scope="col" class="sortable t-r" data-key="ch24">24h <span class="caret">↕</span></th>
+              <th scope="col" class="sortable t-r" data-key="ch7">7d <span class="caret">↕</span></th>
+              <th scope="col" class="sortable t-r" data-key="cap">Market cap <span class="caret">↓</span></th>
+              <th scope="col" class="t-r">7d trend</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td colspan="7" style="padding:48px;text-align:center" class="dim">Loading market data…</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="dim" style="font-size:0.74rem;margin-top:14px">
+        Source: CoinGecko public API, refreshed every 60 seconds while this tab is visible.
+        If the feed is unreachable, bundled sample data is shown and labelled as such.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================ SENTIMENT + CONVERTER -->
+  <section class="section">
+    <div class="wrap">
+      <div class="grid" style="grid-template-columns:1fr 1fr 1.2fr;gap:24px">
+
+        <div class="chart-box" data-anim>
+          <div class="kpi-l">Market sentiment</div>
+          <h3 class="h3" style="margin:10px 0 18px">Fear &amp; Greed Index</h3>
+          <div class="fear-gauge">
+            <div class="chart-canvas" style="height:170px"><canvas id="fearGauge" role="img" aria-label="Fear and greed gauge"></canvas></div>
+          </div>
+          <div class="center" style="margin-top:8px">
+            <div class="fear-n" id="fearNum">—</div>
+            <div class="fear-l" id="fearLabel">Loading</div>
+          </div>
+          <p class="dim" style="font-size:0.72rem;margin-top:16px">
+            A contrarian indicator. We treat extremes as a prompt to re-read our theses, never as a signal on their own.
+          </p>
+        </div>
+
+        <div class="chart-box" data-anim style="--d:0.08s">
+          <div class="kpi-l">Tool</div>
+          <h3 class="h3" style="margin:10px 0 18px">Quick converter</h3>
+          <div class="field">
+            <label for="convAmt">Amount</label>
+            <input class="inp num" id="convAmt" type="number" value="1" min="0" step="any">
+          </div>
+          <div class="field" style="margin-top:18px">
+            <label for="convFrom">Asset</label>
+            <select class="inp" id="convFrom"></select>
+          </div>
+          <div style="border-top:1px solid var(--line);margin-top:26px;padding-top:20px">
+            <div class="kpi-l">Value in USD</div>
+            <div class="num" id="convOut" style="font-size:1.7rem;margin-top:10px;letter-spacing:-0.03em">—</div>
+            <div class="dim" id="convRate" style="font-size:0.74rem;margin-top:8px">—</div>
+          </div>
+        </div>
+
+        <div class="chart-box" data-anim style="--d:0.16s">
+          <div class="chart-hd">
+            <div>
+              <div class="kpi-l">Seven-day trend</div>
+              <h3 class="h3" style="margin-top:8px" id="trendTitle">Bitcoin</h3>
+            </div>
+            <div class="seg" id="trendPick"></div>
+          </div>
+          <div class="chart-canvas" style="height:230px"><canvas id="trendChart" role="img" aria-label="Seven day price trend"></canvas></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================== HEATMAP -->
+  <section class="section" style="border-top:1px solid var(--line)">
+    <div class="wrap">
+      <div class="section-hd">
+        <div class="eyebrow" data-anim="fade">At a glance</div>
+        <h2 class="h2" data-anim>24-hour move, sized by market cap.</h2>
+        <p class="lede" data-anim>
+          Tile size follows market capitalisation. Fill density follows the move — solid for
+          gains, hatched outline for declines — so the map reads without colour.
+        </p>
+      </div>
+      <div id="heatmap" style="display:grid;grid-template-columns:repeat(12,1fr);gap:2px;min-height:340px" data-anim="fade"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================== CTA -->
+  <section class="section invert">
+    <div class="wrap center">
+      <h2 class="display" style="max-width:17ch;margin-inline:auto" data-anim>Prices are noise. Positioning is the job.</h2>
+      <p class="lede" style="margin-top:22px;color:inherit;opacity:0.72" data-anim>
+        We publish our research methodology, not just our conclusions. Read it, then decide
+        whether you want us managing anything.
+      </p>
+      <div class="flex gap wrapf" style="justify-content:center;margin-top:34px" data-anim>
+        <a class="btn" href="insights.html" data-magnet>Read the research</a>
+        <a class="btn btn-ghost" style="border-color:currentColor" href="contact.html">Talk to the desk</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/charts.js"></script>
+<script src="assets/js/render.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/markets.js"></script>
+<script>
+(function () {
+  var amt = document.getElementById("convAmt");
+  var from = document.getElementById("convFrom");
+  var out = document.getElementById("convOut");
+  var rate = document.getElementById("convRate");
+  var pick = document.getElementById("trendPick");
+  var title = document.getElementById("trendTitle");
+  var heat = document.getElementById("heatmap");
+  var trend = null, trendId = "bitcoin", built = false;
+
+  function convert(s) {
+    var c = s.rows.find(function (r) { return r.id === from.value; }) || s.rows[0];
+    if (!c) return;
+    var v = (parseFloat(amt.value) || 0) * c.price;
+    out.textContent = "$" + v.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    rate.textContent = "1 " + c.symbol + " = " + HFMarkets.money(c.price);
+  }
+
+  function drawTrend(s) {
+    var c = s.rows.find(function (r) { return r.id === trendId; }) || s.rows[0];
+    if (!c || !c.spark || c.spark.length < 2) return;
+    title.textContent = c.name;
+    var labels = c.spark.map(function (_, i, a) {
+      var daysAgo = 7 - (i / (a.length - 1)) * 7;
+      return daysAgo < 0.5 ? "now" : "-" + Math.round(daysAgo) + "d";
+    });
+    var series = [{ name: c.symbol, data: c.spark, style: "solid", format: HFMarkets.money }];
+    if (trend) trend.update(series, labels);
+    else trend = HFChart.line(document.getElementById("trendChart"), {
+      labels: labels, series: series,
+      pad: { t: 14, r: 12, b: 26, l: 62 },
+      yFormat: function (v) { return v >= 1000 ? (v / 1000).toFixed(1) + "k" : v.toFixed(2); }
+    });
+  }
+
+  function drawHeat(s) {
+    var total = s.rows.reduce(function (t, c) { return t + (c.cap || 0); }, 0) || 1;
+    heat.innerHTML = s.rows.slice().sort(function (a, b) { return b.cap - a.cap; }).map(function (c) {
+      var share = (c.cap || 0) / total;
+      var span = Math.max(2, Math.min(6, Math.round(share * 26)));
+      var rows = share > 0.3 ? 2 : 1;
+      var up = c.ch24 >= 0;
+      var mag = Math.min(1, Math.abs(c.ch24) / 8);
+      var bg = up
+        ? "background:var(--ink);color:var(--bg);opacity:" + (0.35 + mag * 0.65)
+        : "background:transparent;border:1px solid var(--line-2);color:var(--ink);" +
+          "background-image:repeating-linear-gradient(45deg,var(--line-2) 0 " + (1 + mag * 2).toFixed(1) + "px,transparent " + (1 + mag * 2).toFixed(1) + "px 7px)";
+      return '<div style="grid-column:span ' + span + ';grid-row:span ' + rows + ';' + bg +
+        ';min-height:76px;padding:12px;display:flex;flex-direction:column;justify-content:space-between" ' +
+        'title="' + c.name + " " + HFMarkets.pct(c.ch24) + '">' +
+        '<span class="num" style="font-weight:600;font-size:0.82rem">' + c.symbol + "</span>" +
+        '<span class="num" style="font-size:0.72rem">' + HFMarkets.pct(c.ch24) + "</span></div>";
+    }).join("");
+  }
+
+  HFMarkets.subscribe(function (s) {
+    if (!s.rows.length) return;
+    if (!built) {
+      built = true;
+      from.innerHTML = s.rows.map(function (c) {
+        return '<option value="' + c.id + '">' + c.name + " (" + c.symbol + ")</option>";
+      }).join("");
+      pick.innerHTML = s.rows.slice(0, 4).map(function (c, i) {
+        return '<button data-id="' + c.id + '"' + (i === 0 ? ' class="on"' : "") + ">" + c.symbol + "</button>";
+      }).join("");
+      pick.addEventListener("click", function (e) {
+        var b = e.target.closest("[data-id]");
+        if (!b) return;
+        Array.prototype.forEach.call(pick.children, function (x) { x.classList.toggle("on", x === b); });
+        trendId = b.dataset.id;
+        drawTrend(HFMarkets.state);
+      });
+      amt.addEventListener("input", function () { convert(HFMarkets.state); });
+      from.addEventListener("change", function () { convert(HFMarkets.state); });
+    }
+    convert(s);
+    drawTrend(s);
+    drawHeat(s);
+  });
+})();
+</script>
+</body>
+</html>
